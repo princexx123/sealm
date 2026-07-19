@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#061426" />
+  <meta name="description" content="Arquivo diário de rankings da comunidade SealM ON ONE." />
+  <title>SealM ON ONE — Central de Rankings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="stylesheet" href="/src/admin.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#inicio"><span class="brand-mark">S</span><span>SealM <b>ON ONE</b></span></a>
+    <nav><a href="#ranking">Rankings</a><a href="#como-funciona">Como funciona</a></nav>
+    <button class="admin-link" data-open-admin><span>⚙</span> Painel administrativo</button>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="eyebrow"><i></i> COMUNIDADE BRASILEIRA</div>
+        <h1>Todo reset.<br><em>Todo ranking.</em><br>Um só lugar.</h1>
+        <p>Acompanhe a evolução diária dos jogadores nos resets das 05h e 18h. Seu histórico de rankings, organizado e sempre disponível.</p>
+        <div class="hero-actions"><a href="#ranking" class="btn primary">Ver ranking de hoje <span>↓</span></a></div>
+        <div class="next-reset"><span class="pulse"></span><div><small>PRÓXIMO RESET</small><strong id="next-reset">Calculando...</strong></div></div>
+      </div>
+    </section>
+
+    <section class="rank-section" id="ranking">
+      <div class="section-head">
+        <div><span class="overline">ARQUIVO DIÁRIO</span><h2>Ranking Shiltz</h2><p>Selecione uma data para conferir os registros de cada reset.</p></div>
+        <div class="date-control"><button id="prev-day" aria-label="Dia anterior">‹</button><label><span>DATA SELECIONADA</span><input id="date-picker" type="date"></label><button id="next-day" aria-label="Próximo dia">›</button></div>
+      </div>
+      <div class="day-status"><span id="today-label">HOJE</span><strong id="pretty-date"></strong><i></i><span id="record-count">0 DE 2 REGISTROS</span></div>
+      <div class="ranking-grid" id="ranking-grid"></div>
+    </section>
+
+    <section class="info-section" id="como-funciona">
+      <div class="info-copy"><span class="overline">CICLO DIÁRIO</span><h2>Dois momentos.<br>Uma história completa.</h2><p>O ranking reinicia duas vezes por dia. Cada print preserva aquele momento e cria um histórico confiável da evolução da comunidade.</p></div>
+      <div class="timeline">
+        <article><span class="time-icon dawn">☀</span><div><small>RESET DA MANHÃ</small><h3>05:00</h3><p>O primeiro retrato do dia, logo após o reset matinal.</p></div></article>
+        <div class="line"><i></i></div>
+        <article><span class="time-icon dusk">☾</span><div><small>RESET DA TARDE</small><h3>18:00</h3><p>O fechamento do ciclo, mostrando a disputa ao fim do dia.</p></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#inicio"><span class="brand-mark">S</span><span>SealM <b>ON ONE</b></span></a><p>Feito pela comunidade, para a comunidade.</p><span>Projeto não oficial • 2026</span></footer>
+
+  <dialog id="admin-modal">
+    <form method="dialog" class="modal-shell" id="upload-form">
+      <header><div><span class="overline">ÁREA DE GESTÃO</span><h2>Gerenciar rankings</h2><p>Selecione o dia e o reset. Um novo envio substitui somente o registro escolhido, sem afetar os outros dias.</p></div><button value="cancel" class="close" aria-label="Fechar">×</button></header>
+      <label class="field"><span>Data do ranking</span><input type="date" id="upload-date" required></label>
+      <fieldset><legend>Horário do reset</legend><label class="radio-card"><input type="radio" name="reset" value="05" checked><span class="radio-ui">☀</span><span><b>Reset das 05h</b><small>Registro da manhã</small></span></label><label class="radio-card"><input type="radio" name="reset" value="18"><span class="radio-ui">☾</span><span><b>Reset das 18h</b><small>Registro da tarde</small></span></label></fieldset>
+      <label class="drop-zone" id="drop-zone"><input type="file" id="image-input" accept="image/png,image/jpeg,image/webp" required><span class="upload-icon">↑</span><b id="file-name">Arraste o print ou clique para selecionar</b><small>PNG, JPG ou WEBP • máximo recomendado 8 MB</small><img id="upload-preview" alt="Prévia do print"></label>
+      <div class="modal-actions"><button value="cancel" class="btn cancel">Cancelar</button><button type="submit" value="default" class="btn primary">Salvar neste dia</button></div>
+    </form>
+  </dialog>
+  <dialog id="login-modal">
+    <form class="login-shell" id="login-form">
+      <button type="button" class="close" id="close-login" aria-label="Fechar">×</button>
+      <span class="login-lock">♜</span><span class="overline">ACESSO RESTRITO</span>
+      <h2>Painel administrativo</h2><p>Entre com o usuário criado no Supabase para gerenciar os rankings.</p>
+      <label><span>E-mail</span><input type="email" id="admin-email" autocomplete="username" required placeholder="admin@exemplo.com"></label>
+      <label><span>Senha</span><input type="password" id="admin-password" autocomplete="current-password" required placeholder="••••••••"></label>
+      <p class="form-error" id="login-error"></p>
+      <button type="submit" class="btn primary">Entrar no painel</button>
+    </form>
+  </dialog>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><button aria-label="Fechar">×</button><img alt="Print do ranking ampliado"><div></div></div>
+  <div class="toast" id="toast">✓ Ranking publicado com sucesso!</div>
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>
