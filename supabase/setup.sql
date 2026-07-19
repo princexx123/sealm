@@ -5,10 +5,15 @@ create table if not exists public.rankings (
   reset_slot text not null check (reset_slot in ('05', '18')),
   image_path text not null,
   image_url text not null,
+  image_path_2 text,
+  image_url_2 text,
   published_at timestamptz not null default now(),
   published_by uuid references auth.users(id),
   unique (ranking_date, reset_slot)
 );
+
+alter table public.rankings add column if not exists image_path_2 text;
+alter table public.rankings add column if not exists image_url_2 text;
 
 alter table public.rankings enable row level security;
 
