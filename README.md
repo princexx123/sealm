@@ -17,6 +17,8 @@ npm run dev
 4. Copie `.env.example` para `.env` e preencha a URL e a chave pública/publishable do projeto.
 5. Na Vercel, crie as mesmas variáveis `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY` em Settings > Environment Variables.
 
+Se o projeto foi conectado pela integração oficial Supabase ↔ Vercel, a configuração também reconhece automaticamente `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+
 Os prints ficam no Supabase Storage e os registros na tabela `rankings`. A página é pública para leitura, enquanto uploads e substituições exigem uma sessão autenticada.
 
 No Windows, também é possível abrir a versão compilada executando `abrir-site.cmd`. Não abra `dist/index.html` diretamente: navegadores bloqueiam partes de aplicações JavaScript quando carregadas pelo protocolo `file://`.
