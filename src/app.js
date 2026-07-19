@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
-import heroUrl from '../assets/shiltz-ranking-hero-v2.png';
+import heroUrl from '../assets/shiltz-ranking-hero-v3.png';
 
-document.querySelector('.hero').style.backgroundImage = `url(${heroUrl})`;
+document.querySelector('#hero-art').src = heroUrl;
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 const configured = Boolean(url && key && !url.includes('SEU-PROJETO'));
