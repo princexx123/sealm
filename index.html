@@ -12,10 +12,11 @@
   <link rel="stylesheet" href="/src/style.css" />
   <link rel="stylesheet" href="/src/admin.css" />
   <link rel="stylesheet" href="/src/theme.css" />
+  <link rel="stylesheet" href="/src/effects.css" />
 </head>
 <body>
   <header class="nav">
-    <a class="brand" href="#inicio"><span class="brand-mark">S</span><span>SealM <b>ON ONE</b></span></a>
+    <a class="brand" href="#inicio"><span class="brand-mark"><img src="/assets/sealm-emblem.png" alt="Emblema SealM"></span><span>SealM <b>ON ONE</b></span></a>
     <nav><a href="#ranking">Rankings</a><a href="#como-funciona">Como funciona</a></nav>
     <button class="admin-link" data-open-admin><span>⚙</span> Painel administrativo</button>
   </header>
@@ -48,6 +49,12 @@
       <div class="ranking-grid" id="ranking-grid"></div>
     </section>
 
+    <section class="world-banner reveal" id="shiltz-world">
+      <div class="world-art" aria-hidden="true"></div><div class="world-shine" aria-hidden="true"></div>
+      <div class="world-content"><span class="overline">O MUNDO DE SHILTZ</span><h2>A jornada continua<br>depois de cada reset.</h2><p>Cada registro preserva uma parte da disputa. Explore os dias, compare os ciclos e acompanhe a história sendo escrita pela comunidade.</p><a href="#ranking" class="world-link">EXPLORAR O ARQUIVO <span>↗</span></a></div>
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">⋆</span>
+    </section>
+
     <section class="info-section reveal" id="como-funciona">
       <div class="info-copy"><span class="overline">CICLO DIÁRIO</span><h2>Dois momentos.<br>Uma história completa.</h2><p>O ranking reinicia duas vezes por dia. Cada print preserva aquele momento e cria um histórico confiável da evolução da comunidade.</p></div>
       <div class="timeline">
@@ -58,7 +65,7 @@
     </section>
   </main>
 
-  <footer><a class="brand" href="#inicio"><span class="brand-mark">S</span><span>SealM <b>ON ONE</b></span></a><p>Feito pela comunidade, para a comunidade.</p><span>Projeto não oficial • 2026</span></footer>
+  <footer><a class="brand" href="#inicio"><span class="brand-mark"><img src="/assets/sealm-emblem.png" alt="Emblema SealM"></span><span>SealM <b>ON ONE</b></span></a><p>Feito pela comunidade, para a comunidade.</p><span>Projeto não oficial • 2026</span></footer>
 
   <dialog id="admin-modal">
     <form method="dialog" class="modal-shell" id="upload-form">
