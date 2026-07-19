@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import heroUrl from '../assets/shiltz-ranking-hero.png';
+import heroUrl from '../assets/shiltz-ranking-hero-v2.png';
 
 document.querySelector('.hero').style.backgroundImage = `url(${heroUrl})`;
 const url = import.meta.env.VITE_SUPABASE_URL;
