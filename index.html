@@ -29,8 +29,10 @@
   <link rel="stylesheet" href="/src/routes.css" />
   <link rel="stylesheet" href="/src/spinner-fix.css" />
   <link rel="stylesheet" href="/src/calculator-large.css" />
+  <link rel="stylesheet" href="/src/polish.css" />
 </head>
 <body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <header class="nav">
     <a class="brand" href="#inicio"><span class="brand-mark"><img src="/assets/sealm-emblem.png" alt="Emblema SealM"></span><span>SealM <b>ON ONE</b></span></a>
     <nav><a href="/">Ranking Shiltz</a><a href="/calculadora">Calculadora</a></nav>
@@ -38,7 +40,7 @@
 
   <main>
     <section class="hero" id="inicio">
-      <img class="hero-art" id="hero-art" alt="Shiltz Ranking — reino marítimo e campeão SealM">
+      <img class="hero-art" id="hero-art" alt="Shiltz Ranking — reino marítimo e campeão SealM" fetchpriority="high" decoding="async">
       <div class="hero-overlay"></div>
       <div class="hero-runes" aria-hidden="true"><i>✦</i><i>✧</i><i>⋆</i></div>
     </section>
@@ -99,6 +101,7 @@
   </dialog>
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><button aria-label="Fechar">×</button><img alt="Print do ranking ampliado"><div></div></div>
   <div class="toast" id="toast">✓ Ranking publicado com sucesso!</div>
+  <button class="back-top" id="back-top" type="button" aria-label="Voltar ao topo">↑</button>
   <script type="module" src="/src/app.js"></script>
 </body>
 </html>
