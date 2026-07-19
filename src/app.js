@@ -57,6 +57,20 @@ const bosses=['Xamã do Céu','Gato de Botas Douradas','Grande Rei Rei Moomoo de
 const bossTables={'Xamã do Céu':[
   {label:'Classificação 1',contribution:66,shiltz:264},{label:'Classificação 2 ~ Classificação 3',contribution:53,shiltz:212},{label:'Classificação 4 ~ Classificação 5',contribution:43,shiltz:172},{label:'Classificação 6 ~ Classificação 10',contribution:35,shiltz:140},{label:'Classificação 11 ~ Classificação 20',contribution:28,shiltz:112},{label:'Classificação 21 ~ Classificação 30',contribution:23,shiltz:92},{label:'Classificação 31 ~ Classificação 40',contribution:19,shiltz:76},{label:'Classificação 41 ~ Classificação 50',contribution:16,shiltz:64},{label:'Classificação 51 ~ Classificação 60',contribution:13,shiltz:52}
 ]};
+const tierLabels=['Classificação 1','Classificação 2 ~ Classificação 3','Classificação 4 ~ Classificação 5','Classificação 6 ~ Classificação 10','Classificação 11 ~ Classificação 20','Classificação 21 ~ Classificação 30','Classificação 31 ~ Classificação 40','Classificação 41 ~ Classificação 50','Classificação 51 ~ Classificação 60'];
+const makeTiers=values=>values.map(([contribution,shiltz],index)=>({label:tierLabels[index],contribution,shiltz}));
+Object.assign(bossTables,{
+  'Gato de Botas Douradas':makeTiers([[147,588],[118,472],[95,380],[76,304],[61,244],[49,196],[40,160],[32,128],[26,104]]),
+  'Grande Rei Rei Moomoo de Outro Mundo':makeTiers([[186,744],[149,596],[120,480],[96,384],[77,308],[62,248],[50,200],[40,160],[32,128]]),
+  'Gotas de Deus':makeTiers([[228,912],[183,732],[147,588],[118,472],[95,380],[76,304],[61,244],[49,196],[40,160]]),
+  'Galadriel':makeTiers([[700,2800],[560,2240],[448,1792],[359,1436],[288,1152],[231,924],[185,740],[148,592],[119,476]]),
+  'Aememae do Meio Inverno':makeTiers([[279,1116],[224,896],[180,720],[144,576],[116,464],[93,372],[75,300],[60,240],[48,192]]),
+  'Raychak III da Âncora de Prata':makeTiers([[438,1752],[351,1404],[281,1124],[225,900],[180,720],[144,576],[116,464],[93,372],[75,300]]),
+  'Hanajiel':makeTiers([[741,2964],[593,2372],[475,1900],[380,1520],[304,1216],[244,976],[196,784],[157,628],[126,504]]),
+  'Solar, Devota do Sol':makeTiers([[606,2424],[485,1940],[388,1552],[311,1244],[249,996],[200,800],[160,640],[128,512],[103,412]]),
+  'Gariel Escurecido':makeTiers([[645,2580],[516,2064],[413,1652],[331,1324],[265,1060],[212,848],[170,680],[136,544],[109,436]]),
+  'Caranguejo da Fenda Completa':makeTiers([[699,2796],[560,2240],[448,1792],[359,1436],[288,1152],[231,924],[185,740],[148,592],[119,476]])
+});
 const bossSelect=document.querySelector('#boss-select'),tierSelect=document.querySelector('#tier-select'),qtyInput=document.querySelector('#boss-qty'),calculatorCard=document.querySelector('.calculator-card');
 bossSelect.innerHTML=bosses.map(name=>`<option value="${name}">${name}${bossTables[name]?'':' — aguardando tabela'}</option>`).join('');
 function loadBossTiers(){const table=bossTables[bossSelect.value];calculatorCard.classList.toggle('unavailable',!table);tierSelect.disabled=!table;document.querySelector('#add-calculation').disabled=!table;tierSelect.innerHTML=table?table.map((tier,index)=>`<option value="${index}">${tier.label}</option>`).join(''):'<option>Tabela ainda não disponível</option>';calculateBossPoints()}
