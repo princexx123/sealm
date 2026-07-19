@@ -1,9 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import heroUrl from '../assets/sealm-hero.png';
-import nightUrl from '../assets/shiltz-night.png';
 
 document.querySelector('.hero').style.backgroundImage = `url(${heroUrl})`;
-document.querySelector('.world-art').style.backgroundImage = `url(${nightUrl})`;
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 const configured = Boolean(url && key && !url.includes('SEU-PROJETO'));
@@ -53,6 +51,3 @@ updateReset();setInterval(updateReset,30000);loadRankings();
 
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const world=document.querySelector('.world-banner'),worldArt=document.querySelector('.world-art');
-world.addEventListener('pointermove',event=>{const box=world.getBoundingClientRect(),x=(event.clientX-box.left)/box.width-.5,y=(event.clientY-box.top)/box.height-.5;worldArt.style.transform=`scale(1.05) translate(${x*-12}px,${y*-8}px)`});
-world.addEventListener('pointerleave',()=>worldArt.style.transform='scale(1.05)');
