@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css" />
   <link rel="stylesheet" href="/src/admin.css" />
+  <link rel="stylesheet" href="/src/theme.css" />
 </head>
 <body>
   <header class="nav">
@@ -29,9 +30,16 @@
         <div class="hero-actions"><a href="#ranking" class="btn primary">Ver ranking de hoje <span>↓</span></a></div>
         <div class="next-reset"><span class="pulse"></span><div><small>PRÓXIMO RESET</small><strong id="next-reset">Calculando...</strong></div></div>
       </div>
+      <div class="hero-runes" aria-hidden="true"><i>✦</i><i>✧</i><i>⋆</i></div>
     </section>
 
-    <section class="rank-section" id="ranking">
+    <section class="quick-stats reveal">
+      <article><span class="stat-icon">◷</span><div><small>CICLOS DIÁRIOS</small><strong>2 resets</strong></div></article>
+      <i></i><article><span class="stat-icon">♜</span><div><small>ARQUIVO</small><strong>Histórico completo</strong></div></article>
+      <i></i><article><span class="stat-icon">◇</span><div><small>ATUALIZAÇÃO</small><strong>Em tempo real</strong></div></article>
+    </section>
+
+    <section class="rank-section reveal" id="ranking">
       <div class="section-head">
         <div><span class="overline">ARQUIVO DIÁRIO</span><h2>Ranking Shiltz</h2><p>Selecione uma data para conferir os registros de cada reset.</p></div>
         <div class="date-control"><button id="prev-day" aria-label="Dia anterior">‹</button><label><span>DATA SELECIONADA</span><input id="date-picker" type="date"></label><button id="next-day" aria-label="Próximo dia">›</button></div>
@@ -40,7 +48,7 @@
       <div class="ranking-grid" id="ranking-grid"></div>
     </section>
 
-    <section class="info-section" id="como-funciona">
+    <section class="info-section reveal" id="como-funciona">
       <div class="info-copy"><span class="overline">CICLO DIÁRIO</span><h2>Dois momentos.<br>Uma história completa.</h2><p>O ranking reinicia duas vezes por dia. Cada print preserva aquele momento e cria um histórico confiável da evolução da comunidade.</p></div>
       <div class="timeline">
         <article><span class="time-icon dawn">☀</span><div><small>RESET DA MANHÃ</small><h3>05:00</h3><p>O primeiro retrato do dia, logo após o reset matinal.</p></div></article>

@@ -1,7 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 import heroUrl from '../assets/sealm-hero.png';
+import nightUrl from '../assets/shiltz-night.png';
 
 document.querySelector('.hero').style.backgroundImage = `url(${heroUrl})`;
+document.querySelector('.info-section').style.setProperty('--night-art', `url(${nightUrl})`);
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 const configured = Boolean(url && key && !url.includes('SEU-PROJETO'));
@@ -46,3 +48,6 @@ input.onchange=()=>{const f=input.files[0];if(!f)return;fileName.textContent=f.n
 document.querySelector('#upload-form').addEventListener('submit',async e=>{e.preventDefault();const file=input.files[0];if(!file)return;if(file.size>10*1024*1024){alert('A imagem deve ter no máximo 10 MB.');return}const button=e.submitter;button.disabled=true;button.textContent='Enviando...';const date=uploadDate.value,slot=new FormData(e.currentTarget).get('reset'),ext=(file.name.split('.').pop()||'jpg').toLowerCase(),path=`${date}/reset-${slot}.${ext}`;const {data:{user}}=await supabase.auth.getUser();const {error:uploadError}=await supabase.storage.from('ranking-prints').upload(path,file,{upsert:true,contentType:file.type,cacheControl:'3600'});if(uploadError){alert(`Erro no upload: ${uploadError.message}`);button.disabled=false;button.textContent='Salvar neste dia';return}const {data:publicData}=supabase.storage.from('ranking-prints').getPublicUrl(path);const imageUrl=`${publicData.publicUrl}?v=${Date.now()}`;const {error}=await supabase.from('rankings').upsert({ranking_date:date,reset_slot:slot,image_path:path,image_url:imageUrl,published_at:new Date().toISOString(),published_by:user.id},{onConflict:'ranking_date,reset_slot'});button.disabled=false;button.textContent='Salvar neste dia';if(error){alert(`Erro ao salvar: ${error.message}`);return}picker.value=date;adminModal.close();e.currentTarget.reset();uploadDate.value=date;preview.style.display='none';fileName.textContent='Arraste o print ou clique para selecionar';await loadRankings();toast('✓ Ranking salvo e publicado para todos!')});
 function updateReset(){const now=new Date(),targets=[new Date(now),new Date(now)];targets[0].setHours(5,0,0,0);targets[1].setHours(18,0,0,0);let next=targets.find(t=>t>now);if(!next){next=new Date(now);next.setDate(next.getDate()+1);next.setHours(5,0,0,0)}const diff=next-now,h=Math.floor(diff/36e5),m=Math.floor(diff%36e5/6e4);document.querySelector('#next-reset').textContent=`${String(next.getHours()).padStart(2,'0')}:00 • em ${h}h ${String(m).padStart(2,'0')}min`}
 updateReset();setInterval(updateReset,30000);loadRankings();
+
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
