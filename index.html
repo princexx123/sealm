@@ -62,11 +62,11 @@
 
   <dialog id="admin-modal">
     <form method="dialog" class="modal-shell" id="upload-form">
-      <header><div><span class="overline">ÁREA DE GESTÃO</span><h2>Gerenciar rankings</h2><p>Selecione o dia e o reset. Um novo envio substitui somente o registro escolhido, sem afetar os outros dias.</p></div><button value="cancel" class="close" aria-label="Fechar">×</button></header>
+      <header><div><span class="overline">ÁREA DE GESTÃO</span><h2>Gerenciar rankings</h2><p>Selecione o dia e o reset. Um novo envio substitui somente o registro escolhido, sem afetar os outros dias.</p></div><button type="button" class="close" data-close-admin aria-label="Fechar">×</button></header>
       <label class="field"><span>Data do ranking</span><input type="date" id="upload-date" required></label>
       <fieldset><legend>Horário do reset</legend><label class="radio-card"><input type="radio" name="reset" value="05" checked><span class="radio-ui">☀</span><span><b>Reset das 05h</b><small>Registro da manhã</small></span></label><label class="radio-card"><input type="radio" name="reset" value="18"><span class="radio-ui">☾</span><span><b>Reset das 18h</b><small>Registro da tarde</small></span></label></fieldset>
       <label class="drop-zone" id="drop-zone"><input type="file" id="image-input" accept="image/png,image/jpeg,image/webp" required><span class="upload-icon">↑</span><b id="file-name">Arraste o print ou clique para selecionar</b><small>PNG, JPG ou WEBP • máximo recomendado 8 MB</small><img id="upload-preview" alt="Prévia do print"></label>
-      <div class="modal-actions"><button value="cancel" class="btn cancel">Cancelar</button><button type="submit" value="default" class="btn primary">Salvar neste dia</button></div>
+      <div class="modal-actions"><button type="button" class="btn cancel" data-close-admin>Cancelar</button><button type="submit" value="default" class="btn primary">Salvar neste dia</button></div>
     </form>
   </dialog>
   <dialog id="login-modal">

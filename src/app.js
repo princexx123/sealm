@@ -38,6 +38,7 @@ async function openAdmin(){
   uploadDate.value=picker.value;adminModal.showModal();
 }
 document.querySelectorAll('[data-open-admin]').forEach(b=>b.onclick=openAdmin);
+document.querySelectorAll('[data-close-admin]').forEach(button=>button.onclick=()=>adminModal.close());
 document.querySelector('#close-login').onclick=()=>loginModal.close();
 document.querySelector('#login-form').onsubmit=async e=>{e.preventDefault();const errorEl=document.querySelector('#login-error');errorEl.textContent='Entrando...';const {error}=await supabase.auth.signInWithPassword({email:document.querySelector('#admin-email').value,password:document.querySelector('#admin-password').value});if(error){errorEl.textContent='E-mail ou senha inválidos.';return}errorEl.textContent='';loginModal.close();uploadDate.value=picker.value;adminModal.showModal()};
 function moveDay(delta){const d=new Date(`${picker.value}T12:00:00`);d.setDate(d.getDate()+delta);picker.value=localDate(d);loadRankings()}
