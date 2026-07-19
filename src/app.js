@@ -53,7 +53,7 @@ updateReset();setInterval(updateReset,30000);loadRankings();
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-const bosses=['Xamã do Céu','Gato de Botas Douradas','Grande Rei Rei Moomoo de Outro Mundo','Gotas de Deus','Galadriel','Aememae do Meio Inverno','Raychak III da Âncora de Prata','Hanajiel','Solar, Devota do Sol','Gariel Escurecido','Caranguejo da Fenda Completa','Kelberus das Correntes Prisionais','Kelberus','Kelberus Governante Subterrâneo','Kelberus da Corrente Vermelha Subterrânea','Kelberus do Brilho Vermelho'];
+const bosses=['Xamã do Céu','Gato de Botas Douradas','Grande Rei Rei Moomoo de Outro Mundo','Gotas de Deus','Galadriel','Aememae do Meio Inverno','Raychak III da Âncora de Prata','Hanaiel','Solar, Devota do Sol','Gariel Escurecido','Caranguejo da Fenda Completa','Kelberus das Correntes Prisionais','Kelberus','Kelberus Governante Subterrâneo','Kelberus da Corrente Vermelha Subterrânea','Kelberus do Brilho Vermelho'];
 const bossTables={'Xamã do Céu':[
   {label:'Classificação 1',contribution:66,shiltz:264},{label:'Classificação 2 ~ Classificação 3',contribution:53,shiltz:212},{label:'Classificação 4 ~ Classificação 5',contribution:43,shiltz:172},{label:'Classificação 6 ~ Classificação 10',contribution:35,shiltz:140},{label:'Classificação 11 ~ Classificação 20',contribution:28,shiltz:112},{label:'Classificação 21 ~ Classificação 30',contribution:23,shiltz:92},{label:'Classificação 31 ~ Classificação 40',contribution:19,shiltz:76},{label:'Classificação 41 ~ Classificação 50',contribution:16,shiltz:64},{label:'Classificação 51 ~ Classificação 60',contribution:13,shiltz:52}
 ]};
@@ -66,7 +66,7 @@ Object.assign(bossTables,{
   'Galadriel':makeTiers([[700,2800],[560,2240],[448,1792],[359,1436],[288,1152],[231,924],[185,740],[148,592],[119,476]]),
   'Aememae do Meio Inverno':makeTiers([[279,1116],[224,896],[180,720],[144,576],[116,464],[93,372],[75,300],[60,240],[48,192]]),
   'Raychak III da Âncora de Prata':makeTiers([[438,1752],[351,1404],[281,1124],[225,900],[180,720],[144,576],[116,464],[93,372],[75,300]]),
-  'Hanajiel':makeTiers([[741,2964],[593,2372],[475,1900],[380,1520],[304,1216],[244,976],[196,784],[157,628],[126,504]]),
+  'Hanaiel':makeTiers([[741,2964],[593,2372],[475,1900],[380,1520],[304,1216],[244,976],[196,784],[157,628],[126,504]]),
   'Solar, Devota do Sol':makeTiers([[606,2424],[485,1940],[388,1552],[311,1244],[249,996],[200,800],[160,640],[128,512],[103,412]]),
   'Gariel Escurecido':makeTiers([[645,2580],[516,2064],[413,1652],[331,1324],[265,1060],[212,848],[170,680],[136,544],[109,436]]),
   'Caranguejo da Fenda Completa':makeTiers([[699,2796],[560,2240],[448,1792],[359,1436],[288,1152],[231,924],[185,740],[148,592],[119,476]])
