@@ -3,7 +3,6 @@ import heroUrl from '../assets/sealm-hero.png';
 import nightUrl from '../assets/shiltz-night.png';
 
 document.querySelector('.hero').style.backgroundImage = `url(${heroUrl})`;
-document.querySelector('.info-section').style.setProperty('--night-art', `url(${nightUrl})`);
 document.querySelector('.world-art').style.backgroundImage = `url(${nightUrl})`;
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -38,7 +37,7 @@ async function openAdmin(){
   if(!data.session){loginModal.showModal();return}
   uploadDate.value=picker.value;adminModal.showModal();
 }
-document.querySelectorAll('[data-open-admin]').forEach(b=>b.onclick=openAdmin);
+document.addEventListener('keydown',event=>{if(event.ctrlKey&&event.altKey&&event.key.toLowerCase()==='s'){event.preventDefault();openAdmin()}});
 document.querySelectorAll('[data-close-admin]').forEach(button=>button.onclick=()=>adminModal.close());
 document.querySelector('#close-login').onclick=()=>loginModal.close();
 document.querySelector('#login-form').onsubmit=async e=>{e.preventDefault();const errorEl=document.querySelector('#login-error');errorEl.textContent='Entrando...';const {error}=await supabase.auth.signInWithPassword({email:document.querySelector('#admin-email').value,password:document.querySelector('#admin-password').value});if(error){errorEl.textContent='E-mail ou senha inválidos.';return}errorEl.textContent='';loginModal.close();uploadDate.value=picker.value;adminModal.showModal()};
