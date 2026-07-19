@@ -26,11 +26,12 @@
   <link rel="stylesheet" href="/src/viewport-fix.css" />
   <link rel="stylesheet" href="/src/screen-height.css" />
   <link rel="stylesheet" href="/src/calculator.css" />
+  <link rel="stylesheet" href="/src/routes.css" />
 </head>
 <body>
   <header class="nav">
     <a class="brand" href="#inicio"><span class="brand-mark"><img src="/assets/sealm-emblem.png" alt="Emblema SealM"></span><span>SealM <b>ON ONE</b></span></a>
-    <nav><a href="#ranking">Ranking Shiltz</a><a href="#calculadora">Calculadora</a></nav>
+    <nav><a href="/">Ranking Shiltz</a><a href="/calculadora">Calculadora</a></nav>
   </header>
 
   <main>
@@ -63,11 +64,13 @@
         <div class="calc-fields"><label><span>Chefe derrotado</span><select id="boss-select"></select></label><label><span>Faixa de classificação</span><select id="tier-select"></select></label><label><span>Quantidade de derrotas</span><div class="quantity"><button type="button" id="qty-minus">−</button><input id="boss-qty" type="number" min="1" max="999" value="1"><button type="button" id="qty-plus">+</button></div></label></div>
         <div class="calc-unavailable" id="calc-unavailable">A tabela deste chefe ainda será adicionada.</div>
         <div class="calc-results" id="calc-results"><article><small>CONTRIBUIÇÃO</small><strong id="result-contribution">0</strong><span id="unit-contribution">0 por derrota</span></article><i>+</i><article><small>PONTOS SHILTZ</small><strong id="result-shiltz">0</strong><span id="unit-shiltz">0 por derrota</span></article><i>=</i><article class="total"><small>TOTAL DE PONTOS</small><strong id="result-total">0</strong><span id="result-summary">1 derrota calculada</span></article></div>
+        <button type="button" class="btn add-calc" id="add-calculation">+ Adicionar ao cálculo geral</button>
+        <div class="calculation-list"><div class="list-head"><div><small>RESUMO GERAL</small><strong>Chefes adicionados</strong></div><button type="button" id="clear-calculations">Limpar tudo</button></div><div id="calculation-items" class="calculation-items"><p>Nenhum chefe adicionado.</p></div><div class="grand-total"><span><small>CONTRIBUIÇÃO TOTAL</small><strong id="grand-contribution">0</strong></span><i>+</i><span><small>SHILTZ TOTAL</small><strong id="grand-shiltz">0</strong></span><i>=</i><span><small>TOTAL GERAL</small><strong id="grand-total">0</strong></span></div></div>
       </div>
     </section>
   </main>
 
-  <footer><a class="brand" href="#inicio"><span class="brand-mark"><img src="/assets/sealm-emblem.png" alt="Emblema SealM"></span><span>SealM <b>ON ONE</b></span></a><p>© 2026 SealM ON ONE. Todos os direitos reservados.</p><span>Desenvolvido por Prince • Projeto comunitário não oficial</span></footer>
+  <footer><a class="brand" href="/"><span class="brand-mark"><img src="/assets/sealm-emblem.png" alt="Emblema SealM"></span><span>SealM <b>ON ONE</b></span></a><p>© 2026 SealM ON ONE. Todos os direitos reservados.</p><span>Desenvolvido por Prince • Projeto comunitário não oficial</span></footer>
 
   <dialog id="admin-modal">
     <form method="dialog" class="modal-shell" id="upload-form">
