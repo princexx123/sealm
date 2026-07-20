@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="/src/spinner-fix.css" />
   <link rel="stylesheet" href="/src/calculator-large.css" />
   <link rel="stylesheet" href="/src/polish.css" />
+  <link rel="stylesheet" href="/src/lightbox-nav.css" />
 </head>
 <body>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
@@ -99,7 +100,7 @@
       <button type="submit" class="btn primary">Entrar no painel</button>
     </form>
   </dialog>
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><button aria-label="Fechar">×</button><img alt="Print do ranking ampliado"><div></div></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><button class="lightbox-close" aria-label="Fechar">×</button><button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Print anterior">‹</button><img alt="Print do ranking ampliado"><button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Próximo print">›</button><div class="lightbox-caption"></div><span class="lightbox-counter" id="lightbox-counter">1 / 2</span></div>
   <div class="toast" id="toast">✓ Ranking publicado com sucesso!</div>
   <button class="back-top" id="back-top" type="button" aria-label="Voltar ao topo">↑</button>
   <script type="module" src="/src/app.js"></script>
